@@ -46,6 +46,20 @@ do
     echo $LINE
     ALGO=$(echo $LINE|sed 's/.*algo":"//;s/".*//')
     PORT=$(echo $LINE|sed 's/.*port"://;s/,.*//')
+
+    if [ $STRATUM = zergpool.com ]
+    then
+	STRATUMURL=stratum+tcp://mine.$STRATUM:$PORT
+    elif [ $STRATUM = yiimp.eu ]
+    then
+	STRATUMURL=stratum+tcp://$STRATUM:$PORT
+    elif [ $STRATUM = hashrefinery.com ]
+    then
+	STRATUMURL=stratum+tcp://$ALGO.us.$STRATUM:$PORT
+    else
+	STRATUMURL=stratum+tcp://$ALGO.mine.$STRATUM:$PORT
+    fi
+
     if echo $PASS|grep ,$ALGO=
     then
 	if [ -e $ALGO.ini ]
@@ -57,28 +71,17 @@ do
 		
 		if ./$MINER --help|grep $ALGO
 		then
-		    echo $MINER usable for $ALGO
-		    if [ $STRATUM = zergpool.com ]
-		    then
-			STRATUMURL=stratum+tcp://mine.$STRATUM:$PORT
-		    elif [ $STRATUM = yiimp.eu ]
-		    then
-			STRATUMURL=stratum+tcp://$STRATUM:$PORT
-		    elif [ $STRATUM = hashrefinery.com ]
-		    then
-			STRATUMURL=stratum+tcp://$ALGO.us.$STRATUM:$PORT
-		    else
-			STRATUMURL=stratum+tcp://$ALGO.mine.$STRATUM:$PORT
-		    fi
 		    #./$MINER -a $ALGO -o $STRATUMURL -u $WALLET -p $PASS -R 120 &
 		    echo $MINER >> $ALGO.ini
 		    REALMINER=$MINER
 		    #break
-		    #else
-		    #echo $MINER not usable for $ALGO
+		    echo $MINER usable for $ALGO
+		else
+		    echo $MINER not usable for $ALGO
 		fi
 	    done
 	fi
+	#./$MINER -a $ALGO -o $STRATUMURL -u $WALLET -p $PASS -R 120 &
 	./$REALMINER -a $ALGO -o $STRATUMURL -u $WALLET -p $PASS -R 120 >$ALGO-$REALMINER.log &
     else
 	if grep $ALGO hashrates.ini
@@ -107,7 +110,7 @@ do
 	fi
 	if ./cpuminer --help|grep $ALGO
 	then
-	    ./cpuminer -a $ALGO -o $STRATUMURL -u $WALLET >$ALGO-cpu.log &
+	    ./cpuminer -a $ALGO -o $STRATUMURL -u $WALLET -t 1 >$ALGO-cpu.log 2>$ALGO.err &
 	fi
     fi
 done
