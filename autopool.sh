@@ -93,7 +93,7 @@ do
 	    do
 		if ./$MINER --help|grep $ALGO
 		then
-		    echo $ALGO=TBD,$MINER,$STRATUM >>hashrates.ini
+		    echo $ALGO=TBD,./$MINER -a $ALGO -o $STRATUMURL -u $WALLET >>hashrates.ini
 		    FOUND=1
 		    break
 		fi
