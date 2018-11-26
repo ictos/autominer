@@ -9,7 +9,7 @@ Instructions:
 4. Find as many forks as you can and copy each version of ccminer to this directory, changing the name as you go eg. cp ../ccminer-xevan/ccminer ccminer
 5. Run ./autopool.sh specifying the pool, your wallet ID and optionally the currency.
 6. You will get a hashrates.ini for all the algos you can mine. Edit this file.
-7. For each algo, it will tell you the binary & pool URL.  Run the binary manually with the URL to get the hashrate (you need to work out the port & stratum URL yourself, sorry, not quite got this working yet).
+7. For each algo, it will tell you the command to run the binary.  Copy & paste the command into the shell.
 8. As the work progresses, you will see the hashrate.  Enter this in terms of MH/s (so if it's kH/s, divide by 1000).
 9. After doing this for each algo, save the file.
 10. Run ./autopool.sh as in step 5, this time it will run all your ccminers in the background.
