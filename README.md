@@ -16,7 +16,9 @@ Instructions:
 
 You can also add a cpuminer into the mix for non-GPU coins.
 
-To stop mining, kill all the miners.  Easy way to do this, type ccminer-*
+To stop mining, kill all the miners.  Easy way to do this, type-
+killall ccminer-*
+killall cpuminer
 
 Fine-tuning- If a miner doesn't work on a particular algo or isn't as fast as another, edit its ini file eg. decred.ini & delete the miners you don't want to run.
 
