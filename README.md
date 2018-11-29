@@ -28,3 +28,13 @@ cd ccminer-tpruvot
 make -j8
 cp -a ccminer ../autominer/ccminer-tpruvot
 
+The following ccminer forks may or may not be useful:
+ccminer-blake2s:        https://github.com/oxencoin/ccminer-blake2s.git
+ccminer-lenis:  https://github.com/lenis0012/ccminer.git
+ccminer-msvc2015:       https://github.com/djm34/ccminer-msvc2015
+ccminer-sp:     https://github.com/nicehash/ccminer-sp
+ccminer-tpruvot:        https://github.com/tpruvot/ccminer/
+ccminer-x22i:   https://github.com/SUQAORG/ccminer-x22i.git
+ccminer-xevan:  https://github.com/krnlx/ccminer-xevan
+ccminer-zlexis: https://github.com/alexis78/ccminer
+ccminer-sp-hash:  https://github.com/sp-hash/ccminer.git
