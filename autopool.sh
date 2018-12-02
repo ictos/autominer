@@ -24,9 +24,9 @@ STRATUM=$(echo $URL|sed 's/.*\/\///;s/[a-z]*\.//;s/:.*//;s/\/.*//')
 echo stratum: $STRATUM $STRATUM
 if [ $STRATUM = blazepool.com ]
 then
-    curl -L $URL/status|tr '{' '\n' |sed 's/.*{//;s/}//g;s/name/algo/;s/"coins.*//'|sort|uniq > $STRATUM.inf
+    curl -L $URL/status|tr '{' '\n' |sed 's/.*{//;s/}//g;s/name/algo/;s/"coins.*//'|sort|uniq|tr A-Z a-z > $STRATUM.inf
 else
-    curl -L $URL/api/currencies|sed 's/.*{//;s/}//g;s/name.*//'|sort|uniq > $STRATUM.inf
+    curl -L $URL/api/currencies|sed 's/.*{//;s/}//g;s/name.*//'|sort|uniq|tr A-Z a-z > $STRATUM.inf
 fi
 PASS=ID=t5l,c=$BTC
 for RATE in $(grep -v TBD hashrates.ini)
