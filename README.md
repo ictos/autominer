@@ -40,3 +40,6 @@ ccminer-x22i:   https://github.com/SUQAORG/ccminer-x22i.git
 ccminer-xevan:  https://github.com/krnlx/ccminer-xevan
 ccminer-zlexis: https://github.com/alexis78/ccminer
 ccminer-sp-hash:  https://github.com/sp-hash/ccminer.git
+ccminer-yescrypt: https://github.com/nemosminer/ccminerKlausTyescrypt.git
+
+Note ccminer-yescrypt requires a lot of hacking to build on Linux.
